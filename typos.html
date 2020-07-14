@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        const get_before = () => new Date().getTime();
+        let before = new Date().getTime();
+        window.onload = get_before;
+
+        const print = function() {
+            let after = new Date().getTime();
+            let diff = after - before;
+
+            let x = document.getElementById("myDIV");
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (diff < 10000) {
+                        x.innerHTML = this.responseText;
+                    } else {
+                        x.innerHTML = "Slow...";
+                    }
+
+                }
+            };
+
+            xhttp.open("GET", "README.md", true);
+            xhttp.send();
+
+        }
+    </script>
+</head>
+<body>
+<button onclick="print()">Click Me</button>
+<div id="myDIV">What will I be?</div>
+</body>
+</html>
