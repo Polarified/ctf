@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        const get_before = () => new Date().getTime();
+            let before = new Date().getTime();
+            window.onload = get_before;
+
+            const print = function() {
+            let after = new Date().getTime();
+            let diff = after - before;
+
+            var x = document.getElementById("myDIV");
+
+            if (diff < 10) {
+                x.innerHTML = "Fast!";
+            } else {
+                x.innerHTML = "Slow...";
+            }
+        }
+    </script>
+</head>
+<body>
+<button onclick="print()">Click Me</button>
+<div id="myDIV">What will I be?</div>
+</body>
+</html>
